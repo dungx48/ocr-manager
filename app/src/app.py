@@ -19,14 +19,14 @@ app.add_middleware(PrometheusMiddleware)
 kafka_consumer = Controller()
 
 
-@app.on_event("startup")
-def startup_event():
-    logging.info("[APP-WORKER] on startup event....")
-    pool = ThreadPoolExecutor(max_workers=2)
-    kafka_consumer.start()
+# @app.on_event("startup")
+# def startup_event():
+#     logging.info("[APP-WORKER] on startup event....")
+#     pool = ThreadPoolExecutor(max_workers=2)
+#     # kafka_consumer.start()
 
 
-@app.on_event("shutdown")
-def shutdown_event():
-    logging.warning("[APP] running on shutdown event....")
-    kafka_consumer.stop_application()
+# @app.on_event("shutdown")
+# def shutdown_event():
+#     logging.warning("[APP] running on shutdown event....")
+#     # kafka_consumer.stop_application()
