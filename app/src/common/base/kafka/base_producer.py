@@ -10,12 +10,6 @@ from confluent_kafka import Producer
 
 class BaseKafkaProducer:
     def __init__(self, ip, port, **kwargs):
-        """
-        :param ip: ip of kafka cluster: ex: 192.168.1.3,192.168.1.4,192.168.1.5,192.168.1.6
-        :param port: port of ip each. ex 9000,9000,9222,9999
-        :param kwargs:
-          - configs: dict format. Just add if you make sure to change config: ex: {'bootstrap.servers': "192.168.1.3,192.168.1.4"} see more in confluent_kafka
-        """
         self.ip = ip
         self.port = port
         self.executor = ThreadPoolExecutor(int(decouple.config('KAFKA_THREAD_POOL_PRODUCER_SIZE')))

@@ -5,7 +5,7 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette_prometheus import PrometheusMiddleware
 
 from app.src.common.app import app
-from app.src.controller.controller import Controller
+from app.src.controller.ocr_process_controller import ocr_process_router
 
 app.add_middleware(
     CORSMiddleware,
@@ -16,7 +16,9 @@ app.add_middleware(
 )
 app.add_middleware(PrometheusMiddleware)
 
-kafka_consumer = Controller()
+app.include_router(ocr_process_router)
+
+# kafka_consumer = Controller()
 
 
 # @app.on_event("startup")
